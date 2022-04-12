@@ -1,0 +1,5 @@
+
+lab/*/__pycache__
+lab/*/tests/__pycache__
+lab/*/.ok_history
+lab/*/.ok_storage
