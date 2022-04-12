@@ -3,3 +3,7 @@ lab/*/__pycache__
 lab/*/tests/__pycache__
 lab/*/.ok_history
 lab/*/.ok_storage
+
+hw/*/__pycache__
+hw/*/.ok_history
+hw/*/.ok_storage
