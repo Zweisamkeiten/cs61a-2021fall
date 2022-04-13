@@ -12,10 +12,13 @@ def a_plus_abs_b(a, b):
     >>> re.findall(r'^\s*(return .*)', inspect.getsource(a_plus_abs_b), re.M)
     ['return f(a, b)']
     """
+    """
+        assignment statement to give new names to existing functions.
+    """
     if b < 0:
-        f = _____
+        f = sub
     else:
-        f = _____
+        f = add
     return f(a, b)
 
 
@@ -37,7 +40,7 @@ def two_of_three(x, y, z):
     >>> [type(x).__name__ for x in ast.parse(inspect.getsource(two_of_three)).body[0].body]
     ['Expr', 'Return']
     """
-    return _____
+    return x**2 + y**2 + z**2 - max(x, y, z)**2
 
 
 def largest_factor(n):
@@ -50,7 +53,16 @@ def largest_factor(n):
     >>> largest_factor(13) # factor is 1 since 13 is prime
     1
     """
-    "*** YOUR CODE HERE ***"
+    factors = set()
+    factors.add(1)
+    i = 2
+    while i ** 2 < n:
+        if n % i == 0:
+            factors.add(i)
+            factors.add(int(n / i))
+        i += 1
+    return max(factors)
+
 
 
 def if_function(condition, true_result, false_result):
@@ -95,13 +107,13 @@ def with_if_function():
     return if_function(cond(), true_func(), false_func())
 
 def cond():
-    "*** YOUR CODE HERE ***"
+    return False
 
 def true_func():
-    "*** YOUR CODE HERE ***"
+    print(42)
 
 def false_func():
-    "*** YOUR CODE HERE ***"
+    print(47)
 
 
 def hailstone(n):
@@ -119,5 +131,13 @@ def hailstone(n):
     >>> a
     7
     """
-    "*** YOUR CODE HERE ***"
-
+    len = 1
+    print(n)
+    while n != 1:
+        if n % 2 == 0:
+            n /= 2
+        else:
+            n = n * 3 + 1
+        len += 1
+        print(int(n))
+    return len
