@@ -22,7 +22,13 @@ def num_eights(pos):
     ...       ['Assign', 'AnnAssign', 'AugAssign', 'NamedExpr'])
     True
     """
-    "*** YOUR CODE HERE ***"
+    if pos // 10 == 0:
+        if pos == 8:
+            return 1
+        else:
+            return 0
+
+    return num_eights(pos % 10) + num_eights(pos // 10)
 
 
 def pingpong(n):
@@ -58,7 +64,14 @@ def pingpong(n):
     ...       ['Assign', 'AnnAssign', 'AugAssign', 'NamedExpr'])
     True
     """
-    "*** YOUR CODE HERE ***"
+    def helper(result, i, step):
+        if i == n:
+            return result
+        elif i % 8 == 0 or num_eights(i) > 0:
+            return helper(result - step, i + 1, 0 - step)
+        else:
+            return helper(result + step, i + 1, step)
+    return helper(1, 1, 1)
 
 
 def missing_digits(n):
@@ -88,7 +101,14 @@ def missing_digits(n):
     >>> check(HW_SOURCE_FILE, 'missing_digits', ['While', 'For'])
     True
     """
-    "*** YOUR CODE HERE ***"
+    def helper(missing, digits, last):
+        if digits == 0:
+            return missing
+        elif digits % 10 < last - 1:
+            return helper(missing + last - digits % 10 - 1, digits // 10, digits % 10)
+        else:
+            return helper(missing, digits // 10, digits % 10)
+    return helper(0, n // 10, n % 10)
 
 
 def ascending_coin(coin):
@@ -144,7 +164,16 @@ def count_coins(change):
     >>> check(HW_SOURCE_FILE, 'count_coins', ['While', 'For'])
     True
     """
-    "*** YOUR CODE HERE ***"
+    def count_partitions(n, m):
+        if n == 0:
+            return 1
+        elif n < 0:
+            return 0
+        elif m == None:
+            return 0
+        else:
+            return count_partitions(n - m, m) + count_partitions(n, descending_coin(m))
+    return count_partitions(change, 25)
 
 
 def print_move(origin, destination):
@@ -180,7 +209,12 @@ def move_stack(n, start, end):
     Move the top disk from rod 1 to rod 3
     """
     assert 1 <= start <= 3 and 1 <= end <= 3 and start != end, "Bad start/end"
-    "*** YOUR CODE HERE ***"
+    if n == 1:
+        print_move(start, end)
+    else:
+        move_stack(n - 1, start, 6 - start - end)
+        move_stack(1    , start, end)
+        move_stack(n - 1, 6 - start - end, end)
 
 
 from operator import sub, mul
@@ -197,4 +231,4 @@ def make_anonymous_factorial():
     ...     ['Assign', 'AnnAssign', 'AugAssign', 'NamedExpr', 'FunctionDef', 'Recursion'])
     True
     """
-    return 'YOUR_EXPRESSION_HERE'
+    return lambda n: (lambda f, n: f(f, n))(lambda f, n: 1 if n == 1 else mul(n, f(f, sub(n, 1))), n)
