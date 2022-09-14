@@ -9,8 +9,7 @@ def factors_list(n):
     >>> factors_list(28)
     [1, 2, 4, 7, 14]
     """
-    all_factors = []
-    "*** YOUR CODE HERE ***"
+    return [i for i in range(1, n // 2 + 1) if n % i == 0]
 
 
 def flatten(s):
@@ -29,7 +28,19 @@ def flatten(s):
     >>> x
     [[1, [1, 1]], 1, [1, 1]]
     """
-    "*** YOUR CODE HERE ***"
+
+    flatten_list = []
+
+    def helper(l):
+        for i in l:
+            if type(i) == list:
+                helper(i)
+            else:
+                flatten_list.append(i)
+        return
+
+    helper(s)
+    return flatten_list
 
 
 from math import sqrt
@@ -46,7 +57,10 @@ def distance(city_a, city_b):
     >>> distance(city_c, city_d)
     5.0
     """
-    "*** YOUR CODE HERE ***"
+    return sqrt(
+        (get_lat(city_a) - get_lat(city_b)) ** 2
+        + (get_lon(city_a) - get_lon(city_b)) ** 2
+    )
 
 
 def closer_city(lat, lon, city_a, city_b):
@@ -64,7 +78,12 @@ def closer_city(lat, lon, city_a, city_b):
     >>> closer_city(41.29, 174.78, bucharest, vienna)
     'Bucharest'
     """
-    "*** YOUR CODE HERE ***"
+    city_c = make_city("city_c", lat, lon)
+    return (
+        get_name(city_a)
+        if distance(city_a, city_c) < distance(city_b, city_c)
+        else get_name(city_b)
+    )
 
 
 def check_city_abstraction():
@@ -89,6 +108,7 @@ def check_city_abstraction():
     'Bucharest'
     >>> change_abstraction(False)
     """
+
 
 # Treat all the following code as being behind an abstraction layer,
 # you shouldn't need to look at it.
@@ -147,7 +167,7 @@ def get_lon(city):
 
 
 def berry_finder(t):
-    """Returns True if t contains a node with the value 'berry' and 
+    """Returns True if t contains a node with the value 'berry' and
     False otherwise.
 
     >>> scrat = tree('berry')
@@ -163,7 +183,13 @@ def berry_finder(t):
     >>> berry_finder(t)
     True
     """
-    "*** YOUR CODE HERE ***"
+    if label(t) == "berry":
+        return True
+    else:
+        for branch in branches(t):
+            if berry_finder(branch):
+                return True
+        return False
 
 
 def sprout_leaves(t, leaves):
@@ -199,7 +225,11 @@ def sprout_leaves(t, leaves):
           1
           2
     """
-    "*** YOUR CODE HERE ***"
+    if is_leaf(t):
+        return tree(label(t), [tree(x) for x in leaves])
+    else:
+        return tree(label(t), [sprout_leaves(branch, leaves) for branch in branches(t)])
+
 
 # Abstraction tests for sprout_leaves and berry_finder
 
@@ -267,22 +297,23 @@ change_abstraction.changed = False
 
 # Tree ADT
 
+
 def tree(label, branches=[]):
     """Construct a tree with the given label value and a list of branches."""
     if change_abstraction.changed:
         for branch in branches:
-            assert is_tree(branch), 'branches must be trees'
-        return {'label': label, 'branches': list(branches)}
+            assert is_tree(branch), "branches must be trees"
+        return {"label": label, "branches": list(branches)}
     else:
         for branch in branches:
-            assert is_tree(branch), 'branches must be trees'
+            assert is_tree(branch), "branches must be trees"
         return [label] + list(branches)
 
 
 def label(tree):
     """Return the label value of a tree."""
     if change_abstraction.changed:
-        return tree['label']
+        return tree["label"]
     else:
         return tree[0]
 
@@ -290,7 +321,7 @@ def label(tree):
 def branches(tree):
     """Return the list of branches of the given tree."""
     if change_abstraction.changed:
-        return tree['branches']
+        return tree["branches"]
     else:
         return tree[1:]
 
@@ -339,7 +370,7 @@ def print_tree(t, indent=0):
       6
         7
     """
-    print('  ' * indent + str(label(t)))
+    print("  " * indent + str(label(t)))
     for b in branches(t):
         print_tree(b, indent + 1)
 
