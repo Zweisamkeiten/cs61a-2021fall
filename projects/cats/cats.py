@@ -30,8 +30,9 @@ def choose(paragraphs, select, k):
     ''
     """
     # BEGIN PROBLEM 1
+    # 按筛选顺序生成符合筛选函数的段落组成数组 返回第 K 个片段
     choices = [i for i in paragraphs if select(i) == True]
-    return choices[k]
+    return choices[k] if k < len(choices) else ""
     # END PROBLEM 1
 
 
@@ -50,7 +51,15 @@ def about(topic):
     """
     assert all([lower(x) == x for x in topic]), "topics should be lowercase."
     # BEGIN PROBLEM 2
-    "*** YOUR CODE HERE ***"
+    # 将文章段落转换为全小写 并删去标点符号后 分割成单词数组。遍历主题数组 若存在于单词数组中返回True.
+    def is_contain_topic(paragraph):
+        words = split(remove_punctuation(lower(paragraph)))
+        for i in topic:
+            if i in words:
+                return True
+        return False
+
+    return is_contain_topic
     # END PROBLEM 2
 
 
@@ -80,7 +89,19 @@ def accuracy(typed, reference):
     typed_words = split(typed)
     reference_words = split(reference)
     # BEGIN PROBLEM 3
-    "*** YOUR CODE HERE ***"
+
+    # 特殊情况: 两个单词数组都为空时 返回100.0
+    if typed_words == [] and reference_words == []:
+        return 100.0
+
+    # 按照长度短的数组进行遍历 匹配则递增count_correct
+    count_correct = 0
+    for i in range(min(len(typed_words), len(reference_words))):
+        if typed_words[i] == reference_words[i]:
+            count_correct += 1
+
+    # 除数不能为0 当前为typed_words 为空情况 应返回0.0
+    return 0.0 if typed_words == [] else count_correct / len(typed_words) * 100
     # END PROBLEM 3
 
 
@@ -98,7 +119,9 @@ def wpm(typed, elapsed):
     """
     assert elapsed > 0, "Elapsed time must be positive"
     # BEGIN PROBLEM 4
-    "*** YOUR CODE HERE ***"
+    # 得到输入字符的数量(空格标点包含) 除以5(普遍单词长度)
+    count_words = len(typed) / 5
+    return count_words / (elapsed / 60)
     # END PROBLEM 4
 
 
@@ -126,7 +149,21 @@ def autocorrect(typed_word, valid_words, diff_function, limit):
     'testing'
     """
     # BEGIN PROBLEM 5
-    "*** YOUR CODE HERE ***"
+    # 如果typed_word包含在valid_words, 返回typed_word
+    if typed_word in valid_words:
+        return typed_word
+    # 否则 返回valid_words中与typed_word根据差异函数得出差异最小的word
+    # 如果得出最小差异单词差异仍然大于limit则返回typed_word
+    else:
+        lowest_diff_word = min(
+            valid_words,
+            key=lambda valid_word: diff_function(typed_word, valid_word, limit),
+        )
+        return (
+            typed_word
+            if diff_function(typed_word, lowest_diff_word, limit) > limit
+            else lowest_diff_word
+        )
     # END PROBLEM 5
 
 
@@ -153,7 +190,19 @@ def feline_flips(start, goal, limit):
     5
     """
     # BEGIN PROBLEM 6
-    assert False, "Remove this line"
+    def count(cstart, cgoal, count_change):
+        if count_change > limit:
+            return limit + 1
+        elif cstart == "":
+            return count_change + len(cgoal)
+        elif cgoal == "":
+            return count_change + len(cstart)
+        elif cstart[0] == cgoal[0]:
+            return count(cstart[1:], cgoal[1:], count_change)
+        else:
+            return count(cstart[1:], cgoal[1:], count_change + 1)
+
+    return count(start, goal, 0)
     # END PROBLEM 6
 
 
@@ -174,24 +223,27 @@ def minimum_mewtations(start, goal, limit):
     >>> minimum_mewtations("ckiteus", "kittens", big_limit) # ckiteus -> kiteus -> kitteus -> kittens
     3
     """
-    assert False, "Remove this line"
+    # 最小编辑距离 莱文斯坦距离
 
-    if ______________:  # Fill in the condition
+    if limit < 0:  # Fill in the condition
         # BEGIN
-        "*** YOUR CODE HERE ***"
+        return 0
         # END
 
-    elif ___________:  # Feel free to remove or add additional cases
+    elif start == "" or goal == "":  # Feel free to remove or add additional cases
         # BEGIN
-        "*** YOUR CODE HERE ***"
+        return max(len(start), len(goal))
         # END
+
+    elif start[-1] == goal[-1]:
+        return minimum_mewtations(start[:-1], goal[:-1], limit)
 
     else:
-        add = ...  # Fill in these lines
-        remove = ...
-        substitute = ...
+        add = minimum_mewtations(start[:-1], goal, limit - 1)  # Fill in these lines
+        remove = minimum_mewtations(start, goal[:-1], limit - 1)
+        substitute = minimum_mewtations(start[:-1], goal[:-1], limit - 1)
         # BEGIN
-        "*** YOUR CODE HERE ***"
+        return min(add, remove, substitute) + 1
         # END
 
 
@@ -233,7 +285,15 @@ def report_progress(sofar, prompt, user_id, upload):
     0.2
     """
     # BEGIN PROBLEM 8
-    "*** YOUR CODE HERE ***"
+    incorrect_index = 0
+    for index in range(len(sofar)):
+        if sofar[index] == prompt[index]:
+            incorrect_index += 1
+        else:
+            break
+    progress = incorrect_index / len(prompt)
+    upload({"id": user_id, "progress": progress})
+    return progress
     # END PROBLEM 8
 
 
@@ -255,7 +315,12 @@ def time_per_word(words, times_per_player):
     [[6, 3, 6, 2], [10, 6, 1, 2]]
     """
     # BEGIN PROBLEM 9
-    "*** YOUR CODE HERE ***"
+    times_per_word = []
+    for player in times_per_player:
+        times_per_word.append(
+            [player[i + 1] - player[i] for i in range(len(player) - 1)]
+        )
+    return match(words, times_per_word)
     # END PROBLEM 9
 
 
@@ -277,7 +342,21 @@ def fastest_words(match):
     player_indices = range(len(get_times(match)))  # contains an *index* for each player
     word_indices = range(len(get_words(match)))  # contains an *index* for each word
     # BEGIN PROBLEM 10
-    "*** YOUR CODE HERE ***"
+    # 同一单词 不同玩家所使用的时间
+    times_per_word = []
+    for word_index in word_indices:
+        times_per_word.append([])
+        for player_index in player_indices:
+            times_per_word[word_index].append(time(match, player_index, word_index))
+
+    # 每个玩家在所有玩家中完成时间最短的单词
+    fastest_words_per_player = [[] for player_index in player_indices]
+
+    for word_index in word_indices:
+        fastest_words_per_player[
+            times_per_word[word_index].index(min(times_per_word[word_index]))
+        ].append(word_at(match, word_index))
+    return fastest_words_per_player
     # END PROBLEM 10
 
 
@@ -333,7 +412,7 @@ def match_string(match):
     return "match(%s, %s)" % (match[0], match[1])
 
 
-enable_multiplayer = False  # Change to True when you're ready to race.
+enable_multiplayer = True  # Change to True when you're ready to race.
 
 ##########################
 # Command Line Interface #
