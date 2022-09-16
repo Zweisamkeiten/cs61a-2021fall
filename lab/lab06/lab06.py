@@ -27,7 +27,12 @@ def insert_items(lst, entry, elem):
     ...       ['List', 'ListComp', 'Slice'])
     True
     """
-    "*** YOUR CODE HERE ***"
+    count = 0
+    for i in range(len(lst)):
+        if lst[count + i] == entry:
+            lst.insert(count + i + 1, elem)
+            count += 1
+    return lst
 
 
 def count_occurrences(t, n, x):
@@ -50,7 +55,12 @@ def count_occurrences(t, n, x):
     >>> count_occurrences(s2, 6, 6)
     2
     """
-    "*** YOUR CODE HERE ***"
+    count = 0
+    for i in range(n):
+        if next(t) == x:
+            count += 1
+
+    return count
 
 
 def repeated(t, k):
@@ -75,4 +85,16 @@ def repeated(t, k):
     2
     """
     assert k > 1
-    "*** YOUR CODE HERE ***"
+    # 计当前为第一次出现
+    count = 1
+    # 当前在迭代计算个数的值
+    now = next(t)
+    for i in t:
+        if i == now:
+            count += 1
+        else:
+            # 遇到不同 回归初始状态 设置首个为当前值
+            count = 1
+            now = i
+        if count == k:
+            return now
