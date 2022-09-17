@@ -20,7 +20,21 @@ def gen_perms(seq):
     >>> sorted(gen_perms("ab"))
     [['a', 'b'], ['b', 'a']]
     """
-    "*** YOUR CODE HERE ***"
+    # 我这样做接近成功 但是还是多一层括号
+    # seq = list(seq)
+    # if len(seq) == 0:
+    #     return
+    # if len(seq) == 1:
+    #     yield seq
+    # # fmt: off
+    # yield from ([(sub[:i] + [seq[0]] + sub[i:]) for i in range(len(sub) + 1)] for sub in gen_perms(seq[1:]))
+
+    if len(seq) == 1:
+        yield seq
+    else:
+        for perm in gen_perms(list(seq)[1:]):
+            for i in range(len(perm) + 1):
+                yield perm[:i] + [seq[0]] + perm[i:]
 
 
 def path_yielder(t, value):
@@ -57,10 +71,13 @@ def path_yielder(t, value):
     >>> sorted(list(path_to_2))
     [[0, 2], [0, 2, 1, 2]]
     """
-    "*** YOUR CODE HERE ***"
-    for _______________ in _________________:
-        for _______________ in _________________:
-            "*** YOUR CODE HERE ***"
+    path = []
+    path.append(label(t))
+    if label(t) == value:
+        yield path
+    for b in branches(t):
+        for p in path_yielder(b, value):
+            yield path + p
 
 
 def preorder(t):
@@ -73,7 +90,7 @@ def preorder(t):
     >>> preorder(tree(2, [tree(4, [tree(6)])]))
     [2, 4, 6]
     """
-    "*** YOUR CODE HERE ***"
+    return [label(t)] + sum([preorder(b) for b in branches(t)], [])
 
 
 def generate_preorder(t):
@@ -87,7 +104,12 @@ def generate_preorder(t):
     >>> list(gen)
     [2, 3, 4, 5, 6, 7]
     """
-    "*** YOUR CODE HERE ***"
+    yield label(t)
+    for b in branches(t):
+        # for o in preorder(b):
+        #     yield o
+        # Or
+        yield from preorder(b)
 
 
 def remainders_generator(m):
@@ -121,7 +143,15 @@ def remainders_generator(m):
     7
     11
     """
-    "*** YOUR CODE HERE ***"
+
+    def inner_generator(m, remainder):
+        n = naturals()
+        while True:
+            number = next(n)
+            if number % m == remainder:
+                yield number
+
+    yield from [inner_generator(m, remainder) for remainder in range(m)]
 
 
 class Tree:
