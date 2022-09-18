@@ -1,0 +1,102 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/einsam/p/02_cs61a/lab/lab07/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/p5.9.20220828.0/
+AICard	classes.py	/^class AICard(Card):$/;"	c
+Account	lab07.py	/^class Account:$/;"	c
+Car	car.py	/^class Car:$/;"	c
+Card	classes.py	/^class Card:$/;"	c
+Deck	classes.py	/^class Deck:$/;"	c
+ExclusionChecker	construct_check.py	/^class ExclusionChecker(NodeVisitor):$/;"	c
+FreeChecking	lab07.py	/^class FreeChecking(Account):$/;"	c
+Game	classes.py	/^class Game:$/;"	c
+InstructorCard	classes.py	/^class InstructorCard(Card):$/;"	c
+LOSE_MESSAGE	cardgame.py	/^LOSE_MESSAGE = """$/;"	v
+MonsterTruck	car.py	/^class MonsterTruck(Car):$/;"	c
+OPPONENT_DECKOUT_MESSAGE	cardgame.py	/^OPPONENT_DECKOUT_MESSAGE = """$/;"	v
+PLAYER_DECKOUT_MESSAGE	cardgame.py	/^PLAYER_DECKOUT_MESSAGE = """$/;"	v
+Player	classes.py	/^class Player:$/;"	c
+TACard	classes.py	/^class TACard(Card):$/;"	c
+TIE_MESSAGE	cardgame.py	/^TIE_MESSAGE = """$/;"	v
+TutorCard	classes.py	/^class TutorCard(Card):$/;"	c
+WELCOME_MESSAGE	cardgame.py	/^WELCOME_MESSAGE = """$/;"	v
+WIN_MESSAGE	cardgame.py	/^WIN_MESSAGE = """$/;"	v
+_NAMES	construct_check.py	/^_NAMES = {$/;"	v
+__init__	car.py	/^    def __init__(self, make, model):$/;"	m	class:Car
+__init__	classes.py	/^    def __init__(self, cards):$/;"	m	class:Deck
+__init__	classes.py	/^    def __init__(self, deck, name):$/;"	m	class:Player
+__init__	classes.py	/^    def __init__(self, name, attack, defense):$/;"	m	class:Card
+__init__	classes.py	/^    def __init__(self, player1, player2):$/;"	m	class:Game
+__init__	construct_check.py	/^    def __init__(self, disallow=()):$/;"	m	class:ExclusionChecker
+__init__	lab07.py	/^    def __init__(self, account_holder):$/;"	m	class:Account
+__init__	lab07.py	/^    def __init__(self, account_holder):$/;"	m	class:FreeChecking
+__repr__	classes.py	/^    def __repr__(self):$/;"	m	class:Card
+_report	construct_check.py	/^    def _report(self, node, msg=None):$/;"	m	class:ExclusionChecker
+card_parse	cardgame.py	/^def card_parse(line, handsize):$/;"	f
+cardtype	classes.py	/^    cardtype = "AI"$/;"	v	class:AICard
+cardtype	classes.py	/^    cardtype = "Instructor"$/;"	v	class:InstructorCard
+cardtype	classes.py	/^    cardtype = "Staff"$/;"	v	class:Card
+cardtype	classes.py	/^    cardtype = "TA"$/;"	v	class:TACard
+cardtype	classes.py	/^    cardtype = "Tutor"$/;"	v	class:TutorCard
+check	construct_check.py	/^    def check(self, source_file, checked_funcs, disallow=None, source=None):$/;"	m	class:ExclusionChecker
+check	construct_check.py	/^def check(source_file, checked_funcs, disallow, source=None):$/;"	f
+copy	classes.py	/^    def copy(self):$/;"	m	class:AICard
+copy	classes.py	/^    def copy(self):$/;"	m	class:Card
+copy	classes.py	/^    def copy(self):$/;"	m	class:Deck
+copy	classes.py	/^    def copy(self):$/;"	m	class:InstructorCard
+copy	classes.py	/^    def copy(self):$/;"	m	class:TACard
+copy	classes.py	/^    def copy(self):$/;"	m	class:TutorCard
+deposit	lab07.py	/^    def deposit(self, amount):$/;"	m	class:Account
+display_hand	classes.py	/^    def display_hand(self):$/;"	m	class:Player
+display_scores	classes.py	/^    def display_scores(self):$/;"	m	class:Game
+draw	classes.py	/^    def draw(self):$/;"	m	class:Deck
+draw	classes.py	/^    def draw(self):$/;"	m	class:Player
+drive	car.py	/^    def drive(self):$/;"	m	class:Car
+drive	car.py	/^    def drive(self):$/;"	m	class:MonsterTruck
+effect	classes.py	/^    def effect(self, opponent_card, player, opponent):$/;"	m	class:AICard
+effect	classes.py	/^    def effect(self, opponent_card, player, opponent):$/;"	m	class:Card
+effect	classes.py	/^    def effect(self, opponent_card, player, opponent):$/;"	m	class:InstructorCard
+effect	classes.py	/^    def effect(self, opponent_card, player, opponent):$/;"	m	class:TACard
+effect	classes.py	/^    def effect(self, opponent_card, player, opponent):$/;"	m	class:TutorCard
+errors	construct_check.py	/^    def errors(self):$/;"	m	class:ExclusionChecker
+fill_gas	car.py	/^    def fill_gas(self):$/;"	m	class:Car
+free_withdrawals	lab07.py	/^    free_withdrawals = 2$/;"	v	class:FreeChecking
+game_won	classes.py	/^    def game_won(self):$/;"	m	class:Game
+gas	car.py	/^    gas = 30$/;"	v	class:Car
+generic_visit	construct_check.py	/^    def generic_visit(self, node):$/;"	m	class:ExclusionChecker
+headlights	car.py	/^    headlights = 2$/;"	v	class:Car
+interest	lab07.py	/^    interest = 0.02$/;"	v	class:Account
+is_empty	classes.py	/^    def is_empty(self):$/;"	m	class:Deck
+max_withdrawal	lab07.py	/^    max_withdrawal = 10$/;"	v	class:Account
+name_parse	cardgame.py	/^def name_parse(line):$/;"	f
+num_wheels	car.py	/^    num_wheels = 4$/;"	v	class:Car
+opponent_deck	cards.py	/^opponent_deck = standard_deck.copy()$/;"	v
+paint	car.py	/^    def paint(self, color):$/;"	m	class:Car
+play	classes.py	/^    def play(self, card_index):$/;"	m	class:Player
+play_random	classes.py	/^    def play_random(self):$/;"	m	class:Player
+play_round	classes.py	/^    def play_round(self, p1_card, p2_card):$/;"	m	class:Game
+player_deck	cards.py	/^player_deck = standard_deck.copy()$/;"	v
+pop_tire	car.py	/^    def pop_tire(self):$/;"	m	class:Car
+power	classes.py	/^    def power(self, opponent_card):$/;"	m	class:Card
+read_eval_print_loop	cardgame.py	/^def read_eval_print_loop():$/;"	f
+rev	car.py	/^    def rev(self):$/;"	m	class:MonsterTruck
+size	car.py	/^    size = 'Monster'$/;"	v	class:MonsterTruck
+size	car.py	/^    size = 'Tiny'$/;"	v	class:Car
+standard_cards	cards.py	/^standard_cards = [$/;"	v
+standard_deck	cards.py	/^standard_deck = Deck(standard_cards)$/;"	v
+test	tests/wwpd-car.py	/^test = {$/;"	v
+time_to_retire	lab07.py	/^    def time_to_retire(self, amount):$/;"	m	class:Account
+visit_Call	construct_check.py	/^    def visit_Call(self, node):$/;"	m	class:ExclusionChecker
+visit_FunctionDef	construct_check.py	/^    def visit_FunctionDef(self, node):$/;"	m	class:ExclusionChecker
+visit_Module	construct_check.py	/^    def visit_Module(self, node):$/;"	m	class:ExclusionChecker
+win_score	classes.py	/^    win_score = 8$/;"	v	class:Game
+withdraw	lab07.py	/^    def withdraw(self, amount):$/;"	m	class:Account
+withdraw	lab07.py	/^    def withdraw(self, amount):$/;"	m	class:FreeChecking
+withdraw_fee	lab07.py	/^    withdraw_fee = 1$/;"	v	class:FreeChecking
