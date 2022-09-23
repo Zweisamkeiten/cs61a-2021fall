@@ -530,6 +530,13 @@ class Bee(Insect):
     # OVERRIDE CLASS ATTRIBUTES HERE
     is_waterproof = True
 
+    def __init__(self, health, place=None):
+        super().__init__(health, place)
+        self.slowLastTime = 0
+        self.is_slowed = False
+        self.backwards = False
+        self.is_scared = False
+
     def sting(self, ant):
         """Attack an ANT, reducing its health by 1."""
         ant.reduce_health(self.damage)
@@ -558,6 +565,11 @@ class Bee(Insect):
             destination = self.place.exit
 
             # Extra credit: Special handling for bee direction
+            if self.backwards:
+                destination = self.place.entrance
+                if destination.is_hive:
+                    destination = self.place
+                self.backwards = False
             if self.blocked():
                 self.sting(self.place.ant)
             elif self.health > 0 and destination is not None:
@@ -574,7 +586,28 @@ class Bee(Insect):
     def slow(self, length):
         """Slow the bee for a further LENGTH turns."""
         # BEGIN Problem EC
-        "*** YOUR CODE HERE ***"
+
+        old_action = self.action
+        self.slowLastTime += length
+
+        if self.is_slowed:
+            return
+
+        self.is_slowed = True
+
+        def slowaction(gamestate):
+            if gamestate.time % 2 == 0:
+                old_action(gamestate)
+
+        def action(gamestate):
+            if self.slowLastTime > 0:
+                slowaction(gamestate)
+                self.slowLastTime -= 1
+            else:
+                self.is_slowed = False
+                old_action(gamestate)
+
+        self.action = action
         # END Problem EC
 
     def scare(self, length):
@@ -583,7 +616,21 @@ class Bee(Insect):
         go backwards LENGTH times.
         """
         # BEGIN Problem EC
-        "*** YOUR CODE HERE ***"
+        old_action = self.action
+
+        def scareaction(gamestate):
+            self.backwards = True
+            old_action(gamestate)
+
+        def action(gamestate):
+            nonlocal length
+            if length > 0:
+                scareaction(gamestate)
+                length -= 1
+            else:
+                old_action(gamestate)
+
+        self.action = action
         # END Problem EC
 
 
@@ -622,7 +669,8 @@ class SlowThrower(ThrowerAnt):
     name = "Slow"
     food_cost = 4
     # BEGIN Problem EC
-    implemented = False  # Change to True to view in the GUI
+    damage = 0
+    implemented = True  # Change to True to view in the GUI
     # END Problem EC
 
     def throw_at(self, target):
@@ -636,12 +684,15 @@ class ScaryThrower(ThrowerAnt):
     name = "Scary"
     food_cost = 6
     # BEGIN Problem EC
-    implemented = False  # Change to True to view in the GUI
+    damage = 0
+    implemented = True  # Change to True to view in the GUI
     # END Problem EC
 
     def throw_at(self, target):
         # BEGIN Problem EC
-        "*** YOUR CODE HERE ***"
+        if target and not target.is_scared:
+            target.scare(2)
+            target.is_scared = True
         # END Problem EC
 
 
