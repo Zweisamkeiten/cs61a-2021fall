@@ -9,7 +9,7 @@ date created: 2022-09-14 20:34
 构造函数 Constructor
 选择器 Selector
 
-![[Pasted image 20220914201627.png]]
+![](./attachments/Pasted%20image%2020220914201627.png)
 
 违反抽象的原则： 即设计函数时假定输入值的构成方式
 

@@ -107,7 +107,7 @@ def countdown(k):
         yield from countdown(k - 1)
 ```
 
-![[Pasted image 20220916161602.png]]
+![](./attachments/Pasted%20image%2020220916161602.png)
 
 ## Generator function with return
 

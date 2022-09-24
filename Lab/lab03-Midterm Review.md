@@ -1,3 +1,3 @@
-![[Pasted image 20220423203717.png]]
-![[Pasted image 20220423204513.png]]
-![[Pasted image 20220423204809.png]]
+![](./attachments/Pasted%20image%2020220423203717.png)
+![](./attachments/Pasted%20image%2020220423204513.png)
+![](./attachments/Pasted%20image%2020220423204809.png)

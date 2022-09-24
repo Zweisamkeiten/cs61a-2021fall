@@ -1,4 +1,4 @@
-![[Pasted image 20220912205316.png]]
-![[Pasted image 20220912212033.png]]
-![[Pasted image 20220912213134.png]]
-![[Pasted image 20220912215252.png]]
+![](./attachments/Pasted%20image%2020220912205316.png)
+![](./attachments/Pasted%20image%2020220912212033.png)
+![](./attachments/Pasted%20image%2020220912213134.png)
+![](./attachments/Pasted%20image%2020220912215252.png)

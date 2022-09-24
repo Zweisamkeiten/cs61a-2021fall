@@ -36,27 +36,27 @@ print(f"Debuting at #{place}: '{song}' by {artist}")
 
 - Generics 泛型
 
-![[Pasted image 20220919103504.png]]
-![[Pasted image 20220919103512.png]]
-![[Pasted image 20220919103525.png]]
-![[Pasted image 20220919103545.png]]
-![[Pasted image 20220919104006.png]]
-![[Pasted image 20220919104245.png]]
+![](./attachments/Pasted%20image%2020220919103504.png)
+![](./attachments/Pasted%20image%2020220919103512.png)
+![](./attachments/Pasted%20image%2020220919103525.png)
+![](./attachments/Pasted%20image%2020220919103545.png)
+![](./attachments/Pasted%20image%2020220919104006.png)
+![](./attachments/Pasted%20image%2020220919104245.png)
 
-![[Pasted image 20220919104818.png]]
-![[Pasted image 20220919105007.png]]
-![[Pasted image 20220919105019.png]]
-![[Pasted image 20220919105033.png]]
+![](./attachments/Pasted%20image%2020220919104818.png)
+![](./attachments/Pasted%20image%2020220919105007.png)
+![](./attachments/Pasted%20image%2020220919105019.png)
+![](./attachments/Pasted%20image%2020220919105033.png)
 
 ### 特殊方法
 
-![[Pasted image 20220919105102.png]]
-![[Pasted image 20220919105212.png]]
-![[Pasted image 20220919105239.png]]
+![](./attachments/Pasted%20image%2020220919105102.png)
+![](./attachments/Pasted%20image%2020220919105212.png)
+![](./attachments/Pasted%20image%2020220919105239.png)
 
 ### 多态函数
 
-![[Pasted image 20220919105515.png]]
+![](./attachments/Pasted%20image%2020220919105515.png)
 `str()` 与 `__str__`, `repr()` 与 `__repr__`
 str()在其参数上调用 `__str__`
 repr() 在其参数上调用 `__repr__`
@@ -68,7 +68,7 @@ repr() 在其参数上调用 `__repr__`
 - 实例的 `__str__` 属性被忽略
 - 如果 `__str__` 属性没有找到, 使用 `repr` 字符串
 - `str` 是一个类 而不是一个函数
-- ![[Pasted image 20220919120731.png]]
+- ![](./attachments/Pasted%20image%2020220919120731.png)
 
 ### 泛型
 

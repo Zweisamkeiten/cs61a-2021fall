@@ -11,7 +11,7 @@ date created: 2022-09-14 18:38
 worst_list = [ [1, 2],
                [],
                [ [3, False, None],
-                 [4, lambda: 5]]]
+                 [4, lambda: 5)]
 ```
 
 ## Slicing 切片
@@ -35,7 +35,7 @@ listA[0] = 2
 listB[1] = 3
 ```
 
-![[Pasted image 20220914182618.png]]
+![](./attachments/Pasted%20image%2020220914182618.png)
 
 ```python
 listA = [2, 3]
@@ -46,7 +46,7 @@ listA[0] = 2
 listB[1] = 3
 ```
 
-![[Pasted image 20220914182847.png]]
+![](./attachments/Pasted%20image%2020220914182847.png)
 
 切片逆序
 切片形如 list[begin_idx: end_idx: step] 则 list[::-1]可以逆序输出
@@ -77,7 +77,7 @@ Return `True` if any element of `iterable` is true. Return `False` if `iterable`
 `max(iterable, key=None)`
 
 Return the max value in `iterable`
-返回迭代对象中的最大值, 根据 key的规则 [[02-cats#^1d28df]]
+返回迭代对象中的最大值, 根据 key的规则 [[02-cats#^1d28df)
 `min(iterable, key=None)`
 
 Return the min value in `iterable`

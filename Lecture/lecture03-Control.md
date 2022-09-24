@@ -12,7 +12,7 @@
 2.  嵌套函数调用的environment情况，包括global frame 和local frame。
 
 #### control
-[[lab01-Variables-Functions-Control#布尔运算符 bool]]
+[[lab01-Variables-Functions-Control#布尔运算符 bool)
 conditional expressions 条件表达式  
 `TruePart if Condition else FalsePart`
 
@@ -34,7 +34,7 @@ left **and** right 和 left **or** right 的短路特性
 -   **left or right**： 先计算left，如果left为true，表达式的值为left，不计算right的值（不判断right是否有意义，如1/0）；否则，表达式值为right。
 
 ##### 3. conditional statement 条件语句
-[[lab01-Variables-Functions-Control#If statements]]
+[[lab01-Variables-Functions-Control#If statements)
 ```yaml
 if Condition1:
   Statements1

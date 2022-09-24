@@ -2,9 +2,9 @@
 date created: 2022-09-14 20:54
 ---
 
-![[Pasted image 20220914204303.png]]
+![](./attachments/Pasted%20image%2020220914204303.png)
 
-![[Pasted image 20220914204738.png]]
+![](./attachments/Pasted%20image%2020220914204738.png)
 
 等价
 

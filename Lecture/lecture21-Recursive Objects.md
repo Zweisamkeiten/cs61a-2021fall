@@ -17,7 +17,7 @@ insert 元素很慢, 尤其在列表最前面附近的 因为需要移动后续�
 
 **链表** listed list
 
-![[Pasted image 20220919125604.png]]
+![](./attachments/Pasted%20image%2020220919125604.png)
 
 ### Link class
 
@@ -60,12 +60,12 @@ class Link:
 ```
 
 ### 变化链表 Mutating Linked lists
-![[Pasted image 20220919131143.png]]
-![[Pasted image 20220919131203.png]]
-![[Pasted image 20220919131314.png]]
+![](./attachments/Pasted%20image%2020220919131143.png)
+![](./attachments/Pasted%20image%2020220919131203.png)
+![](./attachments/Pasted%20image%2020220919131314.png)
 
 ### Tree class
-![[Pasted image 20220919131326.png]]![[Pasted image 20220919131358.png]]
+![](./attachments/Pasted%20image%2020220919131326.png)![](./attachments/Pasted%20image%2020220919131358.png)
 
 ### 递归对象
-![[Pasted image 20220919131420.png]]
+![](./attachments/Pasted%20image%2020220919131420.png)

@@ -23,7 +23,7 @@ next(iter) # 'roasted red pepper'
 next(iter) # ❌ StopIteration exception
 ```
 
-![[Pasted image 20220915175714.png]]
+![](./attachments/Pasted%20image%2020220915175714.png)
 每次调用都生成新迭代器
 
 `iter()` can return an iterator for any iterable object.
@@ -87,20 +87,20 @@ for num in num_iter:
 ### 有用的内置函数
 
 `list(iterable)` 返回一个包含所有项目的列表 `iterable`
-![[Pasted image 20220915180909.png]]
+![](./attachments/Pasted%20image%2020220915180909.png)
 `tuple(iterable)` 返回一个包含所有项目的元组 `iterable`
 `sorted(iterable)` 返回一个包含所有项目的排序列表 `iterable`
 `reversed(sequence）` 遍历项目 `sequence` 以相反的顺序
-![[Pasted image 20220915181204.png]]
+![](./attachments/Pasted%20image%2020220915181204.png)
 `zip(*iterables)` 使用合并来自每个可迭代对象
-![[Pasted image 20220915181336.png]]
+![](./attachments/Pasted%20image%2020220915181336.png)
 `map(func, iterable, ...)`  使用 `func(x)` 作用在 迭代器中的每个 `x`, 返回的为迭代器
 等同于 [func(x) for x in iterable]
 
 `filter(func, iterable` 迭代每一个 迭代器中的 `x` 如果 `func(x)` == `True` 筛选出来 返回的是迭代器
 等同于 [x for x in iterable if func(x)]
 
-![[Pasted image 20220915183012.png]]
+![](./attachments/Pasted%20image%2020220915183012.png)
 
 `reduce(f, iterable)`- 必须与 `functools`. 应用两个参数的函数 `f`累计到项目 `iterable`，从左到右，从而将序列缩减为单个值。
 例如 `reduce(lambda x, y: x+y, [1, 2, 3, 4, 5])` calculates `((((1+2)+3)+4)+5)`

@@ -33,7 +33,7 @@ from operator import mul
 c = mul(b, 3)
 ```
 
-![[Pasted image 20220914100512.png]]
+![](./attachments/Pasted%20image%2020220914100512.png)
 
 - Containment
 
@@ -61,7 +61,7 @@ for <name> in <expression>:
 ```
 
 ```python
-pairs = [[1, 2], [2, 2], [3, 2], [4, 4]]
+pairs = [[1, 2], [2, 2], [3, 2], [4, 4)
 same_count = 0
 
 for x, y in pairs:
@@ -70,7 +70,7 @@ for x, y in pairs:
 # x, y会将其中嵌套的列表拆分开 每次循环 等价于 x, y = [1, 2] =>  x = 1, y = 2
 ```
 
-![[Pasted image 20220914101508.png]]
+![](./attachments/Pasted%20image%2020220914101508.png)
 
 - range
 
@@ -89,4 +89,4 @@ for x, y in pairs:
 -   For each element in the iterable value of `<iter exp>`:
     -   Bind `<name>` to that element in the new frame from step 1
     -   If `<filter exp>` evaluates to a true value, then add the value of `<map exp>` to the result list
-![[Pasted image 20220914102931.png]]
+![](./attachments/Pasted%20image%2020220914102931.png)

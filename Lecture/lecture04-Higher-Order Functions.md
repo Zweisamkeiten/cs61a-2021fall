@@ -86,7 +86,7 @@ print(h(-5))
 - 减小函数的耦合度, 就是使两个函数的功能界限更为清晰
 
 ## Lambda
-![[Pasted image 20220423142021.png]]
+![](./attachments/Pasted%20image%2020220423142021.png)
 
 ## Call Expression
 所有参数都先计算为值后应用与函数中

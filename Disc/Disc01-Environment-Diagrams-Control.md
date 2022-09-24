@@ -4,7 +4,7 @@ date created: 2022-04-22 22:51
 
 # Disc 1 Control and Environments
 
-## Control [[lecture03-Control#control]]
+## Control [[lecture03-Control#control)
 
 ### If statements
 

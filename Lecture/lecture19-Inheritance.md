@@ -7,13 +7,13 @@ date updated: 2022-09-19 10:24
 
 ### Motivation 动机
 
-![[Pasted image 20220919092620.png]]
+![](./attachments/Pasted%20image%2020220919092620.png)
 对于含有相同属性的不同类， 为了避免重复代码，我们可以使用继承类
 
 ### Inheritance 继承
 
 Base classes and subclasses
-![[Pasted image 20220919093203.png]]
+![](./attachments/Pasted%20image%2020220919093203.png)
 **superclass**
 
 ```python
@@ -33,7 +33,7 @@ class AmorphousBlob(Animal):
 
 在子类中引用父类方法, 可以使用 `super()` et: `super().eat(food)`
 
-![[Pasted image 20220919095256.png]]
+![](./attachments/Pasted%20image%2020220919095256.png)
 
 `super()` 是更好的风格，但是相比较慢
 
@@ -41,11 +41,11 @@ class AmorphousBlob(Animal):
 
 ### Multiple Inheritance 多重继承
 
-![[Pasted image 20220919095822.png]]
+![](./attachments/Pasted%20image%2020220919095822.png)
 所有的对象都隐式继承自 `object`
-![[Pasted image 20220919095913.png]]
-![[Pasted image 20220919095939.png]]
-![[Pasted image 20220919101918.png]]
+![](./attachments/Pasted%20image%2020220919095913.png)
+![](./attachments/Pasted%20image%2020220919095939.png)
+![](./attachments/Pasted%20image%2020220919101918.png)
 
 ### Identity
 
@@ -53,5 +53,5 @@ class AmorphousBlob(Animal):
 
 ### Composition 组合
 
-![[Pasted image 20220919102358.png]]
-![[Pasted image 20220919102449.png]]
+![](./attachments/Pasted%20image%2020220919102358.png)
+![](./attachments/Pasted%20image%2020220919102449.png)
