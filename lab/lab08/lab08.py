@@ -7,7 +7,18 @@ def convert_link(link):
     >>> convert_link(Link.empty)
     []
     """
-    "*** YOUR CODE HERE ***"
+    # iterative
+    # list = []
+    # while link != Link.empty:
+    #     list.append(link.first)
+    #     link = link.rest
+    # return list
+
+    # recursive
+    if not link:
+        return []
+    else:
+        return [link.first] + convert_link(link.rest)
 
 
 def label_squarer(t):
@@ -18,7 +29,12 @@ def label_squarer(t):
     >>> t
     Tree(1, [Tree(9, [Tree(25)]), Tree(49)])
     """
-    "*** YOUR CODE HERE ***"
+    t.label = t.label**2
+
+    if t.is_leaf():
+        return
+    for b in t.branches:
+        label_squarer(b)
 
 
 def cumulative_mul(t):
@@ -30,7 +46,11 @@ def cumulative_mul(t):
     >>> t
     Tree(105, [Tree(15, [Tree(5)]), Tree(7)])
     """
-    "*** YOUR CODE HERE ***"
+    if t.is_leaf():
+        return t.label
+    for b in t.branches:
+        cumulative_mul(b)
+        t.label *= b.label
 
 
 def add_d_leaves(t, v):
@@ -91,7 +111,20 @@ def add_d_leaves(t, v):
           10
         10
     """
-    "*** YOUR CODE HERE ***"
+    depth = 0
+
+    def helper(t, depth):
+        leaves = [Tree(v) for _ in range(depth)]
+
+        if t.is_leaf():
+            t.branches = leaves
+            return
+
+        for b in t.branches:
+            helper(b, depth + 1)
+        t.branches.extend(leaves)
+
+    helper(t, depth)
 
 
 def every_other(s):
@@ -111,7 +144,9 @@ def every_other(s):
     >>> singleton
     Link(4)
     """
-    "*** YOUR CODE HERE ***"
+    if s and s.rest:
+        s.rest = s.rest.rest
+        every_other(s.rest)
 
 
 def prune_small(t, n):
@@ -131,11 +166,11 @@ def prune_small(t, n):
     >>> t3
     Tree(6, [Tree(1), Tree(3, [Tree(1), Tree(2)])])
     """
-    while ___________________________:
-        largest = max(_______________, key=____________________)
-        _________________________
-    for __ in _____________:
-        ___________________
+    while len(t.branches) > n:
+        largest = max(t.branches, key=lambda b: b.label)
+        t.branches.remove(largest)
+    for b in t.branches:
+        prune_small(b, n)
 
 
 class Link:
