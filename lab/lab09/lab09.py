@@ -7,12 +7,7 @@ def insert_into_all(item, nested_list):
     >>> insert_into_all(0, nl)
     [[0], [0, 1, 2], [0, 3]]
     """
-    new_nested_list = []
-    for lst in nested_list:
-        new_lst = lst[:]
-        new_lst.insert(0, item)
-        new_nested_list.append(new_lst)
-    return new_nested_list
+    return [[item] + lst for lst in nested_list]
 
 
 def subseqs(s):
@@ -49,6 +44,15 @@ def non_decrease_subseqs(s):
     >>> sorted(seqs2)
     [[], [1], [1], [1, 1], [1, 1, 2], [1, 2], [1, 2], [2]]
     """
+    # My solutions
+    # if not s:
+    #     return [[]]
+    # else:
+    #     ans = []
+    # ret = non_decrease_subseqs(s[1:])
+    # ans += ret.copy()
+    # ans += [[s[0]] + elem for elem in ret if not elem or s[0] <= elem[0]]
+    # return ans
 
     def subseq_helper(s, prev):
         if not s:
