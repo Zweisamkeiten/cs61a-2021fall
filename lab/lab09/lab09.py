@@ -7,7 +7,12 @@ def insert_into_all(item, nested_list):
     >>> insert_into_all(0, nl)
     [[0], [0, 1, 2], [0, 3]]
     """
-    "*** YOUR CODE HERE ***"
+    new_nested_list = []
+    for lst in nested_list:
+        new_lst = lst[:]
+        new_lst.insert(0, item)
+        new_nested_list.append(new_lst)
+    return new_nested_list
 
 
 def subseqs(s):
@@ -20,11 +25,11 @@ def subseqs(s):
     >>> subseqs([])
     [[]]
     """
-    if ________________:
-        ________________
+    if not s:
+        return [[]]
     else:
-        ________________
-        ________________
+        result = subseqs(s[1:])
+        return result + insert_into_all(s[0], result)
 
 
 def non_decrease_subseqs(s):
@@ -32,6 +37,9 @@ def non_decrease_subseqs(s):
     of S (a list of lists) for which the elements of the subsequence
     are strictly nondecreasing. The subsequences can appear in any order.
 
+    >>> seqs = non_decrease_subseqs([1])
+    >>> sorted(seqs)
+    [[], [1]]
     >>> seqs = non_decrease_subseqs([1, 3, 2])
     >>> sorted(seqs)
     [[], [1], [1, 2], [1, 3], [2], [3]]
@@ -44,15 +52,15 @@ def non_decrease_subseqs(s):
 
     def subseq_helper(s, prev):
         if not s:
-            return ____________________
+            return [[]]
         elif s[0] < prev:
-            return ____________________
+            return subseq_helper(s[1:], prev)
         else:
-            a = ______________________
-            b = ______________________
-            return insert_into_all(________, ______________) + ________________
+            a = subseq_helper(s[1:], prev)
+            b = subseq_helper(s[1:], s[0])
+            return insert_into_all(s[0], b) + a
 
-    return subseq_helper(____, ____)
+    return subseq_helper(s, -1)
 
 
 def num_trees(n):
@@ -64,6 +72,7 @@ def num_trees(n):
       *   *    *   *   *   *
               / \         / \
              *   *       *   *
+    https://en.wikipedia.org/wiki/Catalan_number
 
     >>> num_trees(1)
     1
@@ -75,7 +84,13 @@ def num_trees(n):
     429
 
     """
-    "*** YOUR CODE HERE ***"
+    if n == 1 or n == 2:
+        return 1
+    # return num_trees(n - 1) * (4 * n - 6) // n
+    result = 0
+    for i in range(1, n):
+        result += num_trees(i) * num_trees(n - i)
+    return result
 
 
 def merge(incr_a, incr_b):
@@ -97,7 +112,22 @@ def merge(incr_a, incr_b):
     """
     iter_a, iter_b = iter(incr_a), iter(incr_b)
     next_a, next_b = next(iter_a, None), next(iter_b, None)
-    "*** YOUR CODE HERE ***"
+    while next_a != None and next_b != None:
+        print("DEBUG:", next_a, next_b)
+        if next_a < next_b:
+            yield next_a
+            next_a = next(iter_a, None)
+        elif next_a > next_b:
+            yield next_b
+            next_b = next(iter_b, None)
+        else:
+            yield next_a
+            next_a = next(iter_a, None)
+            next_b = next(iter_b, None)
+    if next_a != None:
+        yield next_a
+    if next_b != None:
+        yield next_b
 
 
 class Account:
@@ -127,25 +157,47 @@ class Account:
     def __init__(self, account_holder):
         self.balance = 0
         self.holder = account_holder
-        "*** YOUR CODE HERE ***"
+        self.transactions = []
 
     def deposit(self, amount):
         """Increase the account balance by amount, add the deposit
         to the transaction history, and return the new balance.
         """
-        "*** YOUR CODE HERE ***"
+        self.transactions.append(("deposit", amount))
+        self.balance += amount
+        return self.balance
 
     def withdraw(self, amount):
         """Decrease the account balance by amount, add the withdraw
         to the transaction history, and return the new balance.
         """
-        "*** YOUR CODE HERE ***"
+        if amount < self.balance:
+            self.transactions.append(("withdraw", amount))
+            self.balance -= amount
+            return self.balance
+        return "balance not enough"
 
     def __str__(self):
-        "*** YOUR CODE HERE ***"
+        return f"{self.holder}'s Balance: ${self.balance}"
 
     def __repr__(self):
-        "*** YOUR CODE HERE ***"
+        deposit = len(
+            [
+                transaction
+                for transaction in self.transactions
+                if transaction[0] == "deposit"
+            ]
+        )
+        withdraws = len(
+            [
+                transaction
+                for transaction in self.transactions
+                if transaction[0] == "withdraw"
+            ]
+        )
+        return (
+            f"Accountholder: {self.holder}, Deposits: {deposit}, Withdraws: {withdraws}"
+        )
 
 
 def trade(first, second):
@@ -185,9 +237,9 @@ def trade(first, second):
     """
     m, n = 1, 1
 
-    equal_prefix = lambda: ______________________
-    while _______________________________:
-        if __________________:
+    equal_prefix = lambda: sum(first[:m]) == sum(second[:n])
+    while m <= len(first) and n <= len(second) and not equal_prefix():
+        if sum(first[:m]) < sum(second[:n]):
             m += 1
         else:
             n += 1
@@ -225,11 +277,11 @@ def shuffle(cards):
     ['AH', 'AD', 'AS', 'AC', '2H', '2D', '2S', '2C', '3H', '3D', '3S', '3C']
     """
     assert len(cards) % 2 == 0, "len(cards) must be even"
-    half = _______________
+    half = len(cards) // 2
     shuffled = []
-    for i in _____________:
-        _________________
-        _________________
+    for i in range(half):
+        shuffled.append(cards[i])
+        shuffled.append(cards[i + half])
     return shuffled
 
 
@@ -253,7 +305,20 @@ def insert(link, value, index):
         ...
     IndexError: Out of bounds!
     """
-    "*** YOUR CODE HERE ***"
+    prev_link = link
+    for _ in range(index):
+        prev_link = link
+        link = link.rest
+        if link is Link.empty:
+            raise IndexError("Out of bounds!")
+    if index == 0:
+        copy_first = Link(link.first, link.rest)
+        link.first = value
+        link.rest = copy_first
+    else:
+        insert_link = Link(value)
+        prev_link.rest = insert_link
+        insert_link.rest = link
 
 
 def deep_len(lnk):
@@ -270,12 +335,12 @@ def deep_len(lnk):
     >>> deep_len(levels)
     5
     """
-    if ______________:
+    if lnk is Link.empty:
         return 0
-    elif ______________:
+    elif not isinstance(lnk, Link):
         return 1
     else:
-        return _________________________
+        return deep_len(lnk.first) + deep_len(lnk.rest)
 
 
 def make_to_string(front, mid, back, empty_repr):
@@ -295,10 +360,10 @@ def make_to_string(front, mid, back, empty_repr):
     """
 
     def printer(lnk):
-        if ______________:
-            return _________________________
+        if lnk is Link.empty:
+            return empty_repr
         else:
-            return _________________________
+            return front + str(lnk.first) + mid + printer(lnk.rest) + back
 
     return printer
 
@@ -353,7 +418,19 @@ def long_paths(t, n):
     >>> long_paths(whole, 4)
     [[0, 11, 12, 13, 14]]
     """
-    "*** YOUR CODE HERE ***"
+    paths = []
+    if t.is_leaf():
+        if n == 0:
+            return [[t.label]]
+        return []
+    for b in t.branches:
+        if n == 0:
+            for path in long_paths(b, 0):
+                paths.append([t.label] + path)
+            continue
+        for path in long_paths(b, n - 1):
+            paths.append([t.label] + path)
+    return paths
 
 
 class Link:
