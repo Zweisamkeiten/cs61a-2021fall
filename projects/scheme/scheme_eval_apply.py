@@ -1,11 +1,10 @@
-import sys
 import os
+import sys
 
+import scheme_forms
 from pair import *
 from scheme_utils import *
 from ucb import main, trace
-
-import scheme_forms
 
 ##############
 # Eval/Apply #
@@ -35,7 +34,9 @@ def scheme_eval(expr, env, _=None):  # Optional third argument is ignored
         return scheme_forms.SPECIAL_FORMS[first](rest, env)
     else:
         # BEGIN PROBLEM 3
-        "*** YOUR CODE HERE ***"
+        return scheme_apply(
+            scheme_eval(first, env), rest.map((lambda x: scheme_eval(x, env))), env
+        )
         # END PROBLEM 3
 
 
@@ -45,15 +46,28 @@ def scheme_apply(procedure, args, env):
     validate_procedure(procedure)
     if isinstance(procedure, BuiltinProcedure):
         # BEGIN PROBLEM 2
-        "*** YOUR CODE HERE ***"
+        listArgs = []
+        while args != nil:
+            listArgs.append(args.first)
+            args = args.rest
+        if procedure.expect_env:
+            # add the current environment env as the last argument to this Python list.
+            listArgs.append(env)
+        try:
+            return procedure.py_func(*listArgs)
+        except TypeError:
+            raise SchemeError("incorrect number of arguments")
+
         # END PROBLEM 2
     elif isinstance(procedure, LambdaProcedure):
         # BEGIN PROBLEM 9
-        "*** YOUR CODE HERE ***"
+        child_frame = procedure.env.make_child_frame(procedure.formals, args)
+        return eval_all(procedure.body, child_frame)
         # END PROBLEM 9
     elif isinstance(procedure, MuProcedure):
         # BEGIN PROBLEM 11
-        "*** YOUR CODE HERE ***"
+        child_frame = env.make_child_frame(procedure.formals, args)
+        return eval_all(procedure.body, child_frame)
         # END PROBLEM 11
     else:
         assert False, "Unexpected procedure: {}".format(procedure)
@@ -75,9 +89,12 @@ def eval_all(expressions, env):
     2
     """
     # BEGIN PROBLEM 6
-    return scheme_eval(
-        expressions.first, env
-    )  # replace this with lines of your own code
+    value = None
+    while expressions is not nil:
+        value = scheme_eval(expressions.first, env)
+        expressions = expressions.rest
+
+    return value
     # END PROBLEM 6
 
 

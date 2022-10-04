@@ -1,5 +1,5 @@
-import sys
 import os
+import sys
 
 from pair import *
 from ucb import main, trace
@@ -31,13 +31,16 @@ class Frame:
     def define(self, symbol, value):
         """Define Scheme SYMBOL to have VALUE."""
         # BEGIN PROBLEM 1
-        "*** YOUR CODE HERE ***"
+        self.bindings[symbol] = value
         # END PROBLEM 1
 
     def lookup(self, symbol):
         """Return the value bound to SYMBOL. Errors if SYMBOL is not found."""
         # BEGIN PROBLEM 1
-        "*** YOUR CODE HERE ***"
+        if symbol in self.bindings:
+            return self.bindings.get(symbol)
+        if self.parent is not None and self.parent.lookup(symbol) != None:
+            return self.parent.lookup(symbol)
         # END PROBLEM 1
         raise SchemeError("unknown identifier: {0}".format(symbol))
 
@@ -56,7 +59,12 @@ class Frame:
         if len(formals) != len(vals):
             raise SchemeError("Incorrect number of arguments to function call")
         # BEGIN PROBLEM 8
-        "*** YOUR CODE HERE ***"
+        child_frame = Frame(self)
+        while formals is not nil:
+            symbol, value = formals.first, vals.first
+            child_frame.define(symbol, value)
+            formals, vals = formals.rest, vals.rest
+        return child_frame
         # END PROBLEM 8
 
 
@@ -90,7 +98,7 @@ class LambdaProcedure(Procedure):
         starts with Frame ENV."""
         assert isinstance(env, Frame), "env must be of type Frame"
 
-        from scheme_utils import validate_type, scheme_listp
+        from scheme_utils import scheme_listp, validate_type
 
         validate_type(formals, scheme_listp, 0, "LambdaProcedure")
         validate_type(body, scheme_listp, 1, "LambdaProcedure")
