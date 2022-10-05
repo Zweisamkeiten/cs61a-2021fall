@@ -1,9 +1,18 @@
 rstring: "r\"" regex* "\""
 
-?regex: character | word
+?regex: character | word | group | pipe | class | quant
 
 character: LETTER | NUMBER
 word: WORD
+group: "(" regex ")"
+pipe: regex "|" regex
+range: NUMBER "-" NUMBER | LETTER "-" LETTER
+class: "[" (character* | range*)+ "]"
+?forquant: group | character | class
+?quant: plus_quant | star_quant | num_quant
+plus_quant: forquant "+"
+star_quant: forquant "*"
+num_quant: forquant "{" [ NUMBER [","]] ["," NUMBER] "}"
 
 %ignore /\s+/
 %import common.LETTER

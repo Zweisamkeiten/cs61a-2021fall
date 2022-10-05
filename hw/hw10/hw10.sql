@@ -26,19 +26,21 @@ CREATE TABLE sizes AS
 
 -- The size of each dog
 CREATE TABLE size_of_dogs AS
-  SELECT "REPLACE THIS LINE WITH YOUR SOLUTION";
+  SELECT name, size FROM dogs, sizes WHERE dogs.height > sizes.min AND dogs.height <= sizes.max;
 
 
 -- All dogs with parents ordered by decreasing height of their parent
 CREATE TABLE by_parent_height AS
-  SELECT "REPLACE THIS LINE WITH YOUR SOLUTION";
+-- SELECT * FROM parents, dogs. 是求 parent X dogs 的笛卡尔积 交换顺序也会改变
+  SELECT child FROM parents, dogs WHERE name = parent ORDER BY height DESC;
 
 
 -- Filling out this helper table is optional
 CREATE TABLE siblings AS
-  SELECT "REPLACE THIS LINE WITH YOUR SOLUTION";
+-- < 表示child 的兄弟对按字典序， 如果不这样，它会把一对兄弟交换位置又输出一遍
+  SELECT a.child AS s1, b.child AS s2 FROM parents AS a, parents AS b WHERE a.parent = b.parent AND a.child < b.child;
 
 -- Sentences about siblings that are the same size
 CREATE TABLE sentences AS
-  SELECT "REPLACE THIS LINE WITH YOUR SOLUTION";
+  SELECT "The two siblings, " || siblings.s1 || " plus " || siblings.s2 || " have the same size: " || a.size FROM siblings, size_of_dogs AS a, size_of_dogs AS b WHERE siblings.s1 = a.name AND siblings.s2 = b.name AND a.size = b.size;
 
