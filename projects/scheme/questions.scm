@@ -7,8 +7,16 @@
 ;; Returns a list of two-element lists
 (define (enumerate s)
   ; BEGIN PROBLEM 15
-  'replace-this-line
+  (define (helper index s)
+    (if (null? s) nil
+      (cons
+       (list index (car s))
+       (helper (+ index 1) (cdr s))
+      )
+    )
   )
+  (helper 0 s)
+)
   ; END PROBLEM 15
 
 ;; Problem 16
@@ -17,8 +25,18 @@
 ;; the merged lists.
 (define (merge inorder? list1 list2)
   ; BEGIN PROBLEM 16
-  'replace-this-line
+  (cond
+    ((and (null? list1) (null? list2)) ())
+    ((null? list1) list2)
+    ((null? list2) list1)
+    (else
+      (if (inorder? (car list1) (car list2))
+        (cons (car list1) (merge inorder? (cdr list1) list2))
+        (cons (car list2) (merge inorder? list1 (cdr list2)))
+        )
+    )
   )
+)
   ; END PROBLEM 16
 
 
