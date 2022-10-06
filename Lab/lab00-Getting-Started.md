@@ -82,4 +82,4 @@ python3 ok -v # 查看当前完成和未完成测试状态
 # Useful Python command line options
 - `python3` 没有参数运行文件, 它会输出结果后返回命令行
 - `-i`: 它会运行了我们的 Python 脚本, 然后进入交互模式, 我们可以继续运行代码通过一行行的方式然后得到即时的反馈而不需要把整个文件重新运行一次
-- `-m doctest`: 对特定文件的 doctests 运行. `-v` 选项可以查看测试过程 [[doctest)
+- `-m doctest`: 对特定文件的 doctests 运行. `-v` 选项可以查看测试过程 [[doctest]]

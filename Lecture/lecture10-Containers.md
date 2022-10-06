@@ -61,7 +61,7 @@ for <name> in <expression>:
 ```
 
 ```python
-pairs = [[1, 2], [2, 2], [3, 2], [4, 4)
+pairs = [[1, 2], [2, 2], [3, 2], [4, 4]]
 same_count = 0
 
 for x, y in pairs:

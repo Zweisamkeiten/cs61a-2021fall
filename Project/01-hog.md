@@ -25,9 +25,9 @@ def make_test_dice(*outcomes):
     return dice
 ```
 
-`nonlocal` 语句会使得所列出的名称指向之前在最近的包含作用域中绑定的除全局变量以外的变量。[[202204201521)
+`nonlocal` 语句会使得所列出的名称指向之前在最近的包含作用域中绑定的除全局变量以外的变量。[[202204201521]]
 
-这是一个典型的闭包函数用法 [[闭包), 通过 `nonlocal` 是嵌套函数中的 `index` 指向其外部函数中的 index 所指向的整数对象, 使得 index 成为一个自由变量. 当函数可以从已完成执行的封闭作用域访问局部变量时，就会发生闭包。 dice() 函数调用结束帧栈销毁后, dice 函数对象中的 `index` 依旧指向原指定的整数对象, 因此可以持久化 index 变量.
+这是一个典型的闭包函数用法 [[闭包]], 通过 `nonlocal` 是嵌套函数中的 `index` 指向其外部函数中的 index 所指向的整数对象, 使得 index 成为一个自由变量. 当函数可以从已完成执行的封闭作用域访问局部变量时，就会发生闭包。 dice() 函数调用结束帧栈销毁后, dice 函数对象中的 `index` 依旧指向原指定的整数对象, 因此可以持久化 index 变量.
 
 ### Problem 1
 
@@ -75,7 +75,7 @@ def announce_lead_changes(last_leader=None):
     return say
 ```
 
-上述函数中, last_leader 反复根据 say 函数中的条件分支, 选择指向 0, 还是 1. 因此 last_leader 在 say 函数内部已转换为 自由变量. [[Python的高阶函数、自由变量和函数闭包是如何实现的？) [[闭包)
+上述函数中, last_leader 反复根据 say 函数中的条件分支, 选择指向 0, 还是 1. 因此 last_leader 在 say 函数内部已转换为 自由变量. [[Python的高阶函数、自由变量和函数闭包是如何实现的？]] [[闭包]]
 
 ## Phase 3: Strategies
 

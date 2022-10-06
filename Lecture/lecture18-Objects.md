@@ -123,6 +123,13 @@ truffle_bar.get_total_price(4)
 
 类变量在所有的示例之间共享，因为他是类的属性，而不是实例
 
+```python
+Product.sales_tax = 1 # 会使得已经创建的实例的sales_tax 都改变，并影响将来创建的
+
+# or
+pina_bar.sales_tax = 1 # 实例新建了实例属性覆盖了 原来的类属性, 因此 再改变 Product.sales_tax 也不会影响它，它自己改变也不会影响原来的类属性
+```
+
 ## Accessing attributes
 
 `getattr` 和点表达式作用相同

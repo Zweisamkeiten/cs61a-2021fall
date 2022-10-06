@@ -47,6 +47,7 @@ print(f"Debuting at #{place}: '{song}' by {artist}")
 ![](./attachments/Pasted%20image%2020220919105007.png)
 ![](./attachments/Pasted%20image%2020220919105019.png)
 ![](./attachments/Pasted%20image%2020220919105033.png)
+这里打错了 最后一个 `lil` 应改为 `"Lamb('Lil lamb')"`
 
 ### 特殊方法
 

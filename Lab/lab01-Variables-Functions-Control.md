@@ -54,7 +54,7 @@ x % y == 0
 
 通过 `调用(call)` 来完成操作
 
-将某些函数应用在一个函数的参数中是通过调用表达式. [[hw01-Control#^344d2f)
+将某些函数应用在一个函数的参数中是通过调用表达式. [[hw01-Control#^344d2f]]
 
 #### Call expression 调用表达式
 
@@ -91,7 +91,7 @@ operator  operand  operand
 
 `and`, `or`, `not`
 **重点** 是需要了解其短路操作
-[[lecture03-Control#2 short-circuit evaluation)
+[[lecture03-Control#2 short-circuit evaluation]]
 
 - `and`, 语句只有在两个操作数的计算结果都为 `True` 时才返回 `True`. 如果其中一个操作数结果为 `False`, 其 `and` 的计算结果为 `False`
 - `or`评估为 `True`如果至少一个操作数计算为 `True`. 如果两个操作数都是 `False`， 然后 `or`评估为 `False`.
@@ -123,7 +123,7 @@ operator  operand  operand
 
 #### If statements
 
-[[lecture03-Control#3 conditional statement 条件语句)
+[[lecture03-Control#3 conditional statement 条件语句]]
 
 ```python
 if x > 3:

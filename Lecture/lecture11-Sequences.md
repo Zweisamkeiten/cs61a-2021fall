@@ -11,7 +11,7 @@ date created: 2022-09-14 18:38
 worst_list = [ [1, 2],
                [],
                [ [3, False, None],
-                 [4, lambda: 5)]
+                 [4, lambda: 5]]]
 ```
 
 ## Slicing 切片
@@ -77,7 +77,7 @@ Return `True` if any element of `iterable` is true. Return `False` if `iterable`
 `max(iterable, key=None)`
 
 Return the max value in `iterable`
-返回迭代对象中的最大值, 根据 key的规则 [[02-cats#^1d28df)
+返回迭代对象中的最大值, 根据 key的规则 [[02-cats#^1d28df]]
 `min(iterable, key=None)`
 
 Return the min value in `iterable`
