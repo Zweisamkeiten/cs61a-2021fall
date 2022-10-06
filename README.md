@@ -14,9 +14,9 @@
 - [x] [HW 06: Object-Oriented Programming, Linked Lists](./hw/hw06)
 - [x] [HW 07: Scheme](./hw/hw07)
 - [x] [HW 08: Scheme Lists](./hw/hw08)
-- [ ] [HW 09: Regular Expressions](./hw/hw09)
-- [ ] [HW 10: BNF, SQL](./hw/hw10)
-- [ ] [HW 11: Final](./hw/hw11)
+- [x] [HW 09: Regular Expressions](./hw/hw09)
+- [x] [HW 10: BNF, SQL](./hw/hw10)
+- [x] [HW 11: Final](./hw/hw11)
 
 ## Lab
 - [x] [Lab 01: Variables & Functions, Control](./lab/lab01)
@@ -30,12 +30,12 @@
 - [x] [Lab 09: Midterm Review](./lab/lab09)
 - [x] [Lab 10: Scheme](./lab/lab10)
 - [x] [Lab 11: Interpreters](./lab/lab11)
-- [ ] [Lab 12: Regular Expressions, BNF](./lab/lab12)
-- [ ] [Lab 13: SQL](./lab/lab13)
-- [ ] [Lab 14: Final Review](./lab/lab14)
+- [x] [Lab 12: Regular Expressions, BNF](./lab/lab12)
+- [x] [Lab 13: SQL](./lab/lab13)
+- [x] [Lab 14: Final Review](./lab/lab14)
 
 ## Projects
 - [x] [Hog](./projects/hog)
 - [x] [Cats](./projects/cats)
 - [x] [Ants](./projects/ants)
-- [ ] [Scheme](./projects/scheme)
+- [x] [Scheme](./projects/scheme)
