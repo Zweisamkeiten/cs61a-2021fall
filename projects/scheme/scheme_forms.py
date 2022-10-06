@@ -241,7 +241,19 @@ def do_define_macro(expressions, env):
     1
     """
     # BEGIN PROBLEM OPTIONAL_2
-    "*** YOUR CODE HERE ***"
+    validate_form(expressions, 2)
+    target = expressions.first
+    if isinstance(target, Pair) and scheme_symbolp(target.first):
+        macro, formal, body = (
+            expressions.first.first,
+            expressions.first.rest,
+            expressions.rest,
+        )
+        validate_formals(formal)
+        env.define(macro, MacroProcedure(formal, body, env))
+        return macro
+    else:
+        raise SchemeError("non-symbol: {0}".format(target))
     # END PROBLEM OPTIONAL_2
 
 

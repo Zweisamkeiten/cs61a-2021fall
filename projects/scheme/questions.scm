@@ -55,12 +55,12 @@
 (define (let-to-lambda expr)
   (cond ((atom? expr)
          ; BEGIN PROBLEM 17
-         'replace-this-line
+         expr
          ; END PROBLEM 17
          )
         ((quoted? expr)
          ; BEGIN PROBLEM 17
-         'replace-this-line
+         (cons 'quote (cdr expr))
          ; END PROBLEM 17
          )
         ((or (lambda? expr)
@@ -69,19 +69,20 @@
                (params (cadr expr))
                (body   (cddr expr)))
            ; BEGIN PROBLEM 17
-           'replace-this-line
+           (cons form (cons params (map let-to-lambda body)))
            ; END PROBLEM 17
            ))
         ((let? expr)
          (let ((values (cadr expr))
                (body   (cddr expr)))
            ; BEGIN PROBLEM 17
-           'replace-this-line
+           (define s (list (map (lambda (i) (car i)) values) (map (lambda (i) (car (cdr i))) values)))
+           (cons (cons 'lambda (cons (car s) (map let-to-lambda body))) (map let-to-lambda (car (cdr s))))
            ; END PROBLEM 17
            ))
         (else
          ; BEGIN PROBLEM 17
-         'replace-this-line
+         (map let-to-lambda expr)
          ; END PROBLEM 17
          )))
 
